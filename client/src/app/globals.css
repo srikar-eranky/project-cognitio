@@ -1,4 +1,10 @@
 :root {
+  --darkGreen : #5B7F77;
+  --mainText : #E5FCF5;
+  --accentGreen1 : #C5EFCB;
+  --accentGreen2 : #B3DEC1;
+  --accentBrown : #CBD4C2;
+
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
@@ -105,3 +111,4 @@ a {
     color-scheme: dark;
   }
 }
+
