@@ -13,4 +13,35 @@
     color: var(--darkGreen);
     margin-right: 7rem;
     margin-top: 2rem;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.logIn:hover{
+    background-color: var(--darkGreen);
+    color : var(--mainText);
+    animation: jello-horizontal 0.8s both;
+}
+
+@keyframes jello-horizontal {
+    0% {
+        transform: scale3d(1, 1, 1);
+    }
+    30% {
+        transform: scale3d(1.25, 0.75, 1);
+    }
+    40% {
+        transform: scale3d(0.75, 1.25, 1);
+    }
+    50% {
+        transform: scale3d(1.15, 0.85, 1);
+    }
+    65% {
+        transform: scale3d(0.95, 1.05, 1);
+    }
+    75% {
+        transform: scale3d(1.05, 0.95, 1);
+    }
+    100% {
+        transform: scale3d(1, 1, 1);
+    }
 }
