@@ -1,0 +1,16 @@
+.logIn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 7rem;
+    height: 2.6rem;
+    border-radius: 10px;
+    border-style: none;
+    background-color: var(--mainText);
+    cursor: pointer;
+    font-family: var(--outfit);
+    font-size: 1.8rem;
+    color: var(--darkGreen);
+    margin-right: 7rem;
+    margin-top: 2rem;
+}
