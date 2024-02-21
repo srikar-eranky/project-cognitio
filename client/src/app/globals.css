@@ -1,3 +1,4 @@
+/*
 :root {
   --darkGreen : #5B7F77;
   --mainText : #E5FCF5;
@@ -112,3 +113,7 @@ a {
   }
 }
 
+*/
+body {
+  margin: 0;
+}
