@@ -1,4 +1,6 @@
-
-.title{
-    color : palegreen;
+.title {
+  color: var(--mainText);
+  font-family: var(--outfit);
+  font-size: 6rem;
+  font-weight: 400;
 }
