@@ -1,4 +1,4 @@
-/*
+
 :root {
   --darkGreen : #5B7F77;
   --mainText : #E5FCF5;
@@ -15,9 +15,5 @@ body{
   background-position: right;
   background-repeat: no-repeat;
   background-size: 105%;
-}
-
-*/
-body {
   margin: 0;
 }
