@@ -45,13 +45,31 @@ function JournalGreeting(){
     }
 
     return (
-        <div>
-            <h1 className={styles.title}>Journal!</h1>
-            <h1 className={styles.title}>{month} {date}, {year}</h1>
-            <h1 className={styles.title}>Prompt: </h1>
+        <div className={styles.background_container}>
+        <div className={styles.title_container}>
+            <h1 className={styles.title}>Journal</h1>
         </div>
-       
-       
+
+        <div className={styles.book}>
+            <div className={styles.arrows_left}>
+                <span class="material-symbols-outlined">
+                    arrow_back_ios
+                </span>
+            </div>
+            <div className={styles.left_container}>
+                <h1 className={styles.date}>{month} {date}, {year}</h1>
+                <h3 className={styles.prompt}>Fill with prompt</h3>
+            </div>
+            <div className={styles.right_container}>
+                <textarea className={styles.textbox} placeholder="Spill your guts" rows="100" cols = "500"></textarea>
+            </div>
+            <div className={styles.arrows_right}>
+                <span class="material-symbols-outlined">
+                    arrow_forward_ios
+                </span>
+            </div>
+        </div>
+        </div>
     )
 }
 
