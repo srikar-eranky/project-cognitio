@@ -5,9 +5,9 @@ function RatingGreeting(){
     return (
         <>
         <h1 className={styles.title}>How are you feeling today?</h1>
-        <Emoji/>
-        <Emoji/>
-        <Emoji/>
+        <Emoji rating={1} />
+        <Emoji rating={2} />
+        <Emoji rating={1} />
         </>
     )
 }

@@ -6,8 +6,13 @@
   background: #d9d9d9;
 }
 
-.face {
+.face1 {
   position: absolute;
-  left: 14px;
+  left: 16px;
+  top: 11%;
+}
+.face2 {
+  position: absolute;
+  left: 7px;
   top: 11%;
 }
