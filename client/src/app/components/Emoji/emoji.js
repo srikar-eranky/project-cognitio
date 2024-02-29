@@ -12,16 +12,46 @@ import rating9 from ".//ratingFaces/rating9.svg";
 import rating10 from ".//ratingFaces/rating10.svg";
 
 const faces = [
-  styles.face1,
-  styles.face2,
-  styles.face3,
-  styles.face4,
-  styles.face5,
-  styles.face6,
-  styles.face7,
-  styles.face8,
-  styles.face9,
-  styles.face10,
+  {
+    face: styles.face1,
+    hover: styles.hover1,
+  },
+  {
+    face: styles.face2,
+    hover: styles.hover2,
+  },
+  {
+    face: styles.face3,
+    hover: styles.hover3,
+  },
+  {
+    face: styles.face4,
+    hover: styles.hover4,
+  },
+  {
+    face: styles.face5,
+    hover: styles.hover5,
+  },
+  {
+    face: styles.face6,
+    hover: styles.hover6,
+  },
+  {
+    face: styles.face7,
+    hover: styles.hover7,
+  },
+  {
+    face: styles.face8,
+    hover: styles.hover8,
+  },
+  {
+    face: styles.face9,
+    hover: styles.hover9,
+  },
+  {
+    face: styles.face10,
+    hover: styles.hover10,
+  },
 ];
 
 function Emoji({ rating }) {
@@ -50,11 +80,11 @@ function Emoji({ rating }) {
     }
   };
 
-  const faceStyle = faces[rating - 1];
+  const { face, hover } = faces[rating - 1];
 
   return (
-    <div className={styles.circle}>
-      <Image src={getRatingSrc()} alt="Rating face" className={faceStyle} />
+    <div className={`${styles.circle} ${hover}`}>
+      <Image src={getRatingSrc()} alt="Rating face" className={face} />
     </div>
   );
 }
