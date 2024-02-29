@@ -4,7 +4,7 @@ import Emoji from "../components/Emoji/emoji";
 function RatingGreeting() {
   return (
     <>
-      <style js global>
+      <style js="true" global="true">
         {`
       body {
           background: linear-gradient(12.8deg, #C5EFCB -29.07%, #5B7F77 94.75%);
