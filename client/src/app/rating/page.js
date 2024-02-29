@@ -4,6 +4,13 @@ import Emoji from "../components/Emoji/emoji";
 function RatingGreeting() {
   return (
     <>
+      <style js global>
+        {`
+      body {
+          background: linear-gradient(12.8deg, #C5EFCB -29.07%, #5B7F77 94.75%);
+       }
+        `}
+      </style>
       <div className={styles.titleContainer}>
         <h1 className={styles.title}>How are you feeling today?</h1>
       </div>
