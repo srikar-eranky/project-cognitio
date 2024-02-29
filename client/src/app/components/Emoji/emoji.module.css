@@ -13,6 +13,46 @@
 }
 .face2 {
   position: absolute;
-  left: 7px;
+  left: 5px;
   top: 11%;
+}
+.face3 {
+  position: absolute;
+  left: 3px;
+  top: 15%;
+}
+.face4 {
+  position: absolute;
+  left: 10px;
+  top: 3%;
+}
+.face5 {
+  position: absolute;
+  left: 8px;
+  top: 10%;
+}
+.face6 {
+  position: absolute;
+  left: 7px;
+  top: 23%;
+}
+.face7 {
+  position: absolute;
+  left: 6px;
+  top: 5%;
+}
+.face8 {
+  position: absolute;
+  left: 10px;
+  top: 20%;
+}
+.face9 {
+  position: absolute;
+  left: 13px;
+  top: 15%;
+}
+.face10 {
+  position: absolute;
+  left: 3px;
+  top: 8%;
 }

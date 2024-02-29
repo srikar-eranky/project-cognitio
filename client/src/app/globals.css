@@ -1,18 +1,19 @@
 :root {
-  --darkGreen : #5B7F77;
-  --mainText : #E5FCF5;
-  --accentGreen1 : #C5EFCB;
-  --accentGreen2 : #B3DEC1;
-  --accentBrown : #CBD4C2;
+  --darkGreen: #5b7f77;
+  --mainText: #e5fcf5;
+  --accentGreen1: #c5efcb;
+  --accentGreen2: #b3dec1;
+  --accentBrown: #cbd4c2;
 }
 
-body{
+body {
+  overflow-x: hidden;
   overflow-y: hidden;
   height: 100vh;
   /* background-image: linear-gradient(12.8deg, #C5EFCB -29.07%, #5B7F77 94.75%), url('../../public/vector.svg'); */
-  background-image: url('../../public/vector.svg'), linear-gradient(12.8deg, #C5EFCB -29.07%, #5B7F77 94.75%);
+  background-image: url("../../public/vector.svg"),
+    linear-gradient(12.8deg, #c5efcb -29.07%, #5b7f77 94.75%);
   background-position: right;
   background-repeat: no-repeat;
   background-size: 105%;
 }
-
