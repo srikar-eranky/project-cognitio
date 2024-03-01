@@ -1,3 +1,5 @@
+"use client";
+import { useState, useEffect } from "react";
 import styles from "./emoji.module.css";
 import Image from "next/image";
 import rating1 from ".//ratingFaces/rating1.svg";
@@ -55,6 +57,8 @@ const faces = [
 ];
 
 function Emoji({ rating }) {
+  const [activeEmoji, setActiveEmoji] = useState(Array(10).fill(false));
+
   const getRatingSrc = () => {
     switch (rating) {
       case 1:
@@ -80,13 +84,32 @@ function Emoji({ rating }) {
     }
   };
 
+  const handleEmojiClick = (index) => {
+    const updatedEmoji = [...activeEmoji];
+    updatedEmoji[index] = !updatedEmoji[index];
+    console.log(updatedEmoji);
+    setActiveEmoji(updatedEmoji);
+  };
+
   const { face, hover } = faces[rating - 1];
+  const isActive = activeEmoji[rating - 1];
 
   return (
-    <div className={`${styles.circle} ${hover}`}>
+    // <div
+    //   className={`${styles.circle} ${isActive ? hover : ""}`}
+    //   onClick={() => handleEmojiClick(rating - 1)}
+    // >
+    <div
+      className={`${styles.circle} ${isActive ? styles.active : hover}`}
+      onClick={() => handleEmojiClick(rating - 1)}
+    >
       <Image src={getRatingSrc()} alt="Rating face" className={face} />
     </div>
   );
 }
 
 export default Emoji;
+
+// useEffect(() => {
+//   console.log(clickedEmoji);
+// }, [clickedEmoji]);

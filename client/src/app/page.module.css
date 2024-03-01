@@ -1,38 +1,37 @@
-
-.nav{
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
+.nav {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.title{
-    font-family: var(--outfit);
-    font-weight: bold;
-    color: var(--mainText);
-    font-size: 13rem;
+.title {
+  font-family: var(--outfit);
+  font-weight: bold;
+  color: var(--mainText);
+  font-size: 11rem;
 }
 
-.title span{
-    color: var(--darkGreen);
+.title span {
+  color: var(--darkGreen);
+  margin-left: 2rem;
 }
 
-.intro{
-    font-family: var(--outfit);
-    color: var(--mainText);
-    border-bottom: 1px solid var(--mainText);
-    letter-spacing: 3px;
-    font-size: 0.8rem;
-    padding-bottom: 10px;
-    margin-bottom: -9rem;
-    margin-left: 1rem;
+.intro {
+  font-family: var(--outfit);
+  color: var(--mainText);
+  border-bottom: 1px solid var(--mainText);
+  letter-spacing: 3px;
+  font-size: 0.8rem;
+  padding-bottom: 10px;
+  margin-bottom: -9rem;
+  margin-left: 1rem;
 }
 
-.titleContainer{
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    margin-left: 5rem;
-    margin-top: 8rem;
+.titleContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-left: 5rem;
+  margin-top: 8rem;
 }
-

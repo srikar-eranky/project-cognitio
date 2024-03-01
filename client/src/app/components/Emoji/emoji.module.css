@@ -92,3 +92,7 @@
 .hover10:hover {
   background-color: #2acf06;
 }
+
+.active {
+  background-color: blue;
+}
