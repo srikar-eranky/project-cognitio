@@ -1,0 +1,98 @@
+.circle {
+  position: relative;
+  width: 125px;
+  height: 125px;
+  border-radius: 180px;
+  background: #d9d9d9;
+  transition: background-color 0.3s ease;
+}
+
+.circle:hover {
+  cursor: pointer;
+}
+
+.face1 {
+  position: absolute;
+  left: 16px;
+  top: 11%;
+}
+.face2 {
+  position: absolute;
+  left: 5px;
+  top: 11%;
+}
+.face3 {
+  position: absolute;
+  left: 3px;
+  top: 15%;
+}
+.face4 {
+  position: absolute;
+  left: 10px;
+  top: 3%;
+}
+.face5 {
+  position: absolute;
+  left: 8px;
+  top: 10%;
+}
+.face6 {
+  position: absolute;
+  left: 7px;
+  top: 23%;
+}
+.face7 {
+  position: absolute;
+  left: 6px;
+  top: 5%;
+}
+.face8 {
+  position: absolute;
+  left: 10px;
+  top: 20%;
+}
+.face9 {
+  position: absolute;
+  left: 13px;
+  top: 15%;
+}
+.face10 {
+  position: absolute;
+  left: 3px;
+  top: 8%;
+}
+
+.hover1:hover {
+  background-color: #ff6666;
+}
+.hover2:hover {
+  background-color: #ff8989;
+}
+.hover3:hover {
+  background-color: #ff9749;
+}
+.hover4:hover {
+  background-color: #ffad60;
+}
+.hover5:hover {
+  background-color: #fde143;
+}
+.hover6:hover {
+  background-color: #f2ff66;
+}
+.hover7:hover {
+  background-color: #c2f296;
+}
+.hover8:hover {
+  background-color: #a1fb8d;
+}
+.hover9:hover {
+  background-color: #afee76;
+}
+.hover10:hover {
+  background-color: #2acf06;
+}
+
+.active {
+  background-color: blue;
+}
