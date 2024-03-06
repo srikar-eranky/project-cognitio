@@ -59,3 +59,4 @@ function RatingGreeting() {
 }
 
 export default RatingGreeting;
+>>>>>>> main
