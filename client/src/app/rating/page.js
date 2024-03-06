@@ -3,12 +3,15 @@ import styles from "./page.module.css";
 import Emoji from "../components/Emoji/emoji";
 import { useState } from "react";
 import { faces } from "../components/Emoji/emoji";
+import NextBtn from "../components/NextBtn/btn";
 
 function RatingGreeting() {
   const [activeRating, setActiveRating] = useState(null);
+  const [showButton, setShowButton] = useState(false);
 
   const handleEmojiClick = (rating) => {
     setActiveRating(rating === activeRating ? null : rating);
+    setShowButton(true);
   };
 
   return (
@@ -36,6 +39,7 @@ function RatingGreeting() {
               <span>{index + 1}</span>
             </div>
           ))}
+          {showButton && <NextBtn />}
         </div>
         <div className={`${styles.emojiRow} ${styles.bottomRow}`}>
           {faces.slice(5).map((face, index) => (

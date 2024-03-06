@@ -15,52 +15,52 @@ export const faces = [
   {
     face: styles.face1,
     hover: styles.hover1,
-    active: styles.active,
+    active: styles.active1,
   },
   {
     face: styles.face2,
     hover: styles.hover2,
-    active: styles.active,
+    active: styles.active2,
   },
   {
     face: styles.face3,
     hover: styles.hover3,
-    active: styles.active,
+    active: styles.active3,
   },
   {
     face: styles.face4,
     hover: styles.hover4,
-    active: styles.active,
+    active: styles.active4,
   },
   {
     face: styles.face5,
     hover: styles.hover5,
-    active: styles.active,
+    active: styles.active5,
   },
   {
     face: styles.face6,
     hover: styles.hover6,
-    active: styles.active,
+    active: styles.active6,
   },
   {
     face: styles.face7,
     hover: styles.hover7,
-    active: styles.active,
+    active: styles.active7,
   },
   {
     face: styles.face8,
     hover: styles.hover8,
-    active: styles.active,
+    active: styles.active8,
   },
   {
     face: styles.face9,
     hover: styles.hover9,
-    active: styles.active,
+    active: styles.active9,
   },
   {
     face: styles.face10,
     hover: styles.hover10,
-    active: styles.active,
+    active: styles.active10,
   },
 ];
 
