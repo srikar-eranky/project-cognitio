@@ -1,5 +1,3 @@
-"use client";
-import { useState, useEffect } from "react";
 import styles from "./emoji.module.css";
 import Image from "next/image";
 import rating1 from ".//ratingFaces/rating1.svg";
@@ -13,52 +11,60 @@ import rating8 from ".//ratingFaces/rating8.svg";
 import rating9 from ".//ratingFaces/rating9.svg";
 import rating10 from ".//ratingFaces/rating10.svg";
 
-const faces = [
+export const faces = [
   {
     face: styles.face1,
     hover: styles.hover1,
+    active: styles.active1,
   },
   {
     face: styles.face2,
     hover: styles.hover2,
+    active: styles.active2,
   },
   {
     face: styles.face3,
     hover: styles.hover3,
+    active: styles.active3,
   },
   {
     face: styles.face4,
     hover: styles.hover4,
+    active: styles.active4,
   },
   {
     face: styles.face5,
     hover: styles.hover5,
+    active: styles.active5,
   },
   {
     face: styles.face6,
     hover: styles.hover6,
+    active: styles.active6,
   },
   {
     face: styles.face7,
     hover: styles.hover7,
+    active: styles.active7,
   },
   {
     face: styles.face8,
     hover: styles.hover8,
+    active: styles.active8,
   },
   {
     face: styles.face9,
     hover: styles.hover9,
+    active: styles.active9,
   },
   {
     face: styles.face10,
     hover: styles.hover10,
+    active: styles.active10,
   },
 ];
 
-function Emoji({ rating }) {
-  const [activeEmoji, setActiveEmoji] = useState(Array(10).fill(false));
-
+function Emoji({ rating, isActive, onClick }) {
   const getRatingSrc = () => {
     switch (rating) {
       case 1:
@@ -84,24 +90,11 @@ function Emoji({ rating }) {
     }
   };
 
-  const handleEmojiClick = (index) => {
-    const updatedEmoji = [...activeEmoji];
-    updatedEmoji[index] = !updatedEmoji[index];
-    console.log(updatedEmoji);
-    setActiveEmoji(updatedEmoji);
-  };
-
-  const { face, hover } = faces[rating - 1];
-  const isActive = activeEmoji[rating - 1];
-
+  const { face, hover, active } = faces[rating - 1];
   return (
-    // <div
-    //   className={`${styles.circle} ${isActive ? hover : ""}`}
-    //   onClick={() => handleEmojiClick(rating - 1)}
-    // >
     <div
-      className={`${styles.circle} ${isActive ? styles.active : hover}`}
-      onClick={() => handleEmojiClick(rating - 1)}
+      className={`${styles.circle} ${isActive ? active : hover}`}
+      onClick={() => onClick(rating)}
     >
       <Image src={getRatingSrc()} alt="Rating face" className={face} />
     </div>
