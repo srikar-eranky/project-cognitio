@@ -1,4 +1,5 @@
 .title{
+    color: var(--accentGreen2);
     color: var(--darkGreen);
     padding: 3vh;
     height:200px;
@@ -68,7 +69,3 @@
     flex-direction: column;
     justify-content: center;
 }
-
-
-
-
