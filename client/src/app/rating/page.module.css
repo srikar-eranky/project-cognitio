@@ -1,4 +1,48 @@
+.titleContainer {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 38vh;
+  margin-bottom: 1.4rem;
+}
 
-.title{
-    color : palegreen;
+.title {
+  color: var(--mainText);
+  font-family: var(--outfit);
+  font-size: 7.5rem;
+  font-weight: 400;
+  text-align: center;
+  width: 60vw;
+}
+
+.ratingContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.emojiRow {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.ratingContainer .emojiRow > * {
+  margin-right: 3rem;
+  margin-bottom: 3rem;
+}
+
+.emojiContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.emojiContainer span {
+  margin-top: 20px;
+  font-size: 2.5rem;
+  font-family: var(--outfit);
+  font-weight: bold;
 }
