@@ -3,6 +3,7 @@ import styles from "./page.module.css";
 import Emoji from "../components/Emoji/emoji";
 import { useState } from "react";
 import { faces } from "../components/Emoji/emoji";
+import NextBtn from "../components/NextBtn/btn";
 
 function RatingGreeting() {
   const [activeRating, setActiveRating] = useState(null);
@@ -36,6 +37,7 @@ function RatingGreeting() {
               <span>{index + 1}</span>
             </div>
           ))}
+          <NextBtn />
         </div>
         <div className={`${styles.emojiRow} ${styles.bottomRow}`}>
           {faces.slice(5).map((face, index) => (
