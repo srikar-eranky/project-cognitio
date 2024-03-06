@@ -22,15 +22,19 @@ export default function Home() {
     console.log(isOpen);
   }
   return (
-
     <div>
       <Image src={menu} width={24} height={24} alt='menu' onClick={handleClick} className={styles.image} />
-
       <div className={styles.navbar}>
-        <div onClick={closeSideBar} className={styles.cancel}>X</div>
+          <div onClick={closeSideBar} className={styles.cancel}>X</div>
         <Navbar />
       </div>
-      
+
+      <div className={styles.titleContainer}>
+        <p className={styles.intro}>WELCOME TO THE</p>
+        <h1 className={styles.title}>
+          Project <span>Cognitio</span>
+        </h1>
+      </div>
     </div>
-  )
+  );
 }
