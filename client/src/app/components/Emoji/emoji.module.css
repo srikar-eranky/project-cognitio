@@ -92,7 +92,33 @@
 .hover10:hover {
   background-color: #2acf06;
 }
-
-.active {
-  background-color: blue;
+.active1 {
+  background-color: #ff6666;
+}
+.active2 {
+  background-color: #ff8989;
+}
+.active3 {
+  background-color: #ff9749;
+}
+.active4 {
+  background-color: #ffad60;
+}
+.active5 {
+  background-color: #fde143;
+}
+.active6 {
+  background-color: #f2ff66;
+}
+.active7 {
+  background-color: #c2f296;
+}
+.active8 {
+  background-color: #a1fb8d;
+}
+.active9 {
+  background-color: #afee76;
+}
+.active10 {
+  background-color: #2acf06;
 }
