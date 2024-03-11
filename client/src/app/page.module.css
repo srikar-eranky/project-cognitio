@@ -9,6 +9,7 @@
   font-weight: bold;
   color: var(--mainText);
   font-size: 11rem;
+  margin-top: 8rem;
 }
 
 .title span {

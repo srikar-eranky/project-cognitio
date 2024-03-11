@@ -10,6 +10,9 @@
   background-color: var(--darkGreen);
   transition: background-color 0.3s ease;
   animation: bounce-in-right 1.1s both;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .svg {
