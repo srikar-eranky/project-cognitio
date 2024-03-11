@@ -1,0 +1,17 @@
+.link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 30px;
+    margin-right: 80px;
+} 
+
+.link a {
+    text-decoration: none;
+    padding-bottom: 40px;
+    color: #5b7f77;
+    width: fit-content;
+    font-size: 20px;
+}
+
