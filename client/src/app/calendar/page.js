@@ -13,7 +13,16 @@ function CreateCalendarDisplay() {
         `}
       </style>
 
-      <h1 className={styles.title}>Calendar!</h1>
+      <h1 className={styles.title}>Calendar</h1>
+      <div className={styles.weekDaysContainer}>
+        <p className={`${styles.weekDay} ${styles.sunday}`}>Sun</p>
+        <p className={`${styles.weekDay} ${styles.monday}`}>Mon</p>
+        <p className={`${styles.weekDay} ${styles.tuesday}`}>Tue</p>
+        <p className={`${styles.weekDay} ${styles.wednesday}`}>Wed</p>
+        <p className={`${styles.weekDay} ${styles.thursday}`}>Thu</p>
+        <p className={`${styles.weekDay} ${styles.friday}`}>Fri</p>
+        <p className={`${styles.weekDay} ${styles.saturday}`}>Sat</p>
+      </div>
       <div className={styles.container}>
         {days.map((day) => (
           <div key={day} className={styles.day}>

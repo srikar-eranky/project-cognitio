@@ -3,6 +3,7 @@
   font-family: var(--Outfit);
   background-color: blue;
   text-align: center;
+  padding: 1.1rem 0;
 }
 
 .container {
@@ -20,4 +21,38 @@
   align-items: center;
   font-family: var(--Outfit);
   font-size: 3rem;
+  border-radius: 25px;
 }
+
+.weekDaysContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: var(--Outfit);
+  font-size: 1.2rem;
+}
+
+/* .sunday {
+  margin-left: 5px;
+}
+.monday {
+  margin-left: 10px;
+}
+.tuesday {
+  margin-left: 20px;
+}
+.wednesday {
+  margin-left: 10px;
+}
+.thursday {
+  margin-right: 15px;
+}
+.friday {
+  margin-right: 18px;
+} */
+
+/* 
+.weekDay {
+  margin-left: 4.5rem;
+  margin-right: 4.5rem;
+} */
