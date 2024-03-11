@@ -9,8 +9,9 @@
 
 .link a {
     text-decoration: none;
-    padding-bottom: 30px;
+    padding-bottom: 40px;
     color: #5b7f77;
     width: fit-content;
+    font-size: 20px;
 }
 
