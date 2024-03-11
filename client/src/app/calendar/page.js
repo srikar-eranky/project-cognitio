@@ -1,7 +1,39 @@
 import styles from "./page.module.css";
 
 function CreateCalendarDisplay() {
-  const days = Array.from({ length: 35 }, (_, i) => i + 1);
+  //year
+  const year = new Date().getFullYear();
+
+  //month
+  const month = new Date().getMonth();
+
+  //what day does month start on
+  const startWeekDay = new Date(year, month, 1).getDay();
+
+  //days in month
+  const daysInMonth = (year, month) => {
+    return new Date(year, month + 1, 0).getDate();
+  };
+
+  //calculate days before month starts
+  const daysBeforeStart = Array.from(
+    { length: startWeekDay },
+    (_, i) => `placeholder-${i}`
+  );
+
+  // Calculate days of the month
+  const daysOfMonth = Array.from(
+    { length: daysInMonth(year, month) },
+    (_, i) => i + 1
+  );
+
+  //calculate days after month ends
+  const daysAfterStart = Array.from(
+    { length: 42 - (daysOfMonth.length + daysBeforeStart.length) },
+    (_, i) => `placeholder-${i}`
+  );
+
+  const days = [...daysBeforeStart, ...daysOfMonth, ...daysAfterStart];
 
   return (
     <>
@@ -29,7 +61,7 @@ function CreateCalendarDisplay() {
       <div className={styles.container}>
         {days.map((day) => (
           <div key={day} className={styles.day}>
-            {day}
+            {typeof day === "number" ? day : ""}
           </div>
         ))}
       </div>
