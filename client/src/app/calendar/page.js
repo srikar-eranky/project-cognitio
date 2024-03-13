@@ -5,35 +5,69 @@ function CreateCalendarDisplay() {
   const year = new Date().getFullYear();
 
   //month
-  const month = new Date().getMonth();
+  let month = new Date().getMonth(); //from 0 - 11 (jan - dec)
 
   //what day does month start on
   const startWeekDay = new Date(year, month, 1).getDay();
 
   //days in month
-  const daysInMonth = (year, month) => {
+  const daysInGivenMonth = (year, month) => {
     return new Date(year, month + 1, 0).getDate();
   };
 
-  //calculate days before month starts
-  const daysBeforeStart = Array.from(
-    { length: startWeekDay },
-    (_, i) => `placeholder-${i}`
-  );
-
   // Calculate days of the month
-  const daysOfMonth = Array.from(
-    { length: daysInMonth(year, month) },
+  const daysOfCurrMonth = Array.from(
+    { length: daysInGivenMonth(year, month) },
     (_, i) => i + 1
   );
 
-  //calculate days after month ends
-  const daysAfterStart = Array.from(
-    { length: 42 - (daysOfMonth.length + daysBeforeStart.length) },
-    (_, i) => `placeholder-${i}`
-  );
+  //calculate days before month starts
+  function findDaysBeforeStart() {
+    const prevMonth = month - 1;
+    const daysOfPrevMonth = Array.from(
+      { length: daysInGivenMonth(year, prevMonth) },
+      (_, i) => i + 1
+    );
+    const daysToExtract = startWeekDay;
+    return daysOfPrevMonth
+      .slice(-daysToExtract)
+      .map((day) => ({ day, isntMonth: true }));
+  }
 
-  const days = [...daysBeforeStart, ...daysOfMonth, ...daysAfterStart];
+  //calculate days after month ends
+  function findDaysAfterStart() {
+    const nextMonth = month + 1;
+    const daysOfNextMonth = Array.from(
+      { length: daysInGivenMonth(year, nextMonth) },
+      (_, i) => i + 1
+    );
+    const daysToExtract =
+      42 - (daysOfCurrMonth.length + daysBeforeStart.length);
+    return daysOfNextMonth
+      .slice(0, daysToExtract)
+      .map((day) => ({ day, isntMonth: true }));
+  }
+
+  const daysBeforeStart = findDaysBeforeStart();
+  const daysAfterStart = findDaysAfterStart();
+
+  const days = [
+    ...daysBeforeStart.map(({ day }) => ({
+      day,
+      isntMonth: true,
+      key: `prev-${day}`,
+    })),
+    ...daysOfCurrMonth.map((day) => ({
+      day,
+      isntMonth: false,
+      key: `curr-${day}`,
+    })),
+    ...daysAfterStart.map(({ day }) => ({
+      day,
+      isntMonth: true,
+      key: `next-${day}`,
+    })),
+  ];
 
   return (
     <>
@@ -59,9 +93,12 @@ function CreateCalendarDisplay() {
       </div>
 
       <div className={styles.container}>
-        {days.map((day) => (
-          <div key={day} className={styles.day}>
-            {typeof day === "number" ? day : ""}
+        {days.map(({ day, isntMonth, key }) => (
+          <div
+            key={key}
+            className={`${styles.day} ${isntMonth ? styles.notMonth : ""}`}
+          >
+            {day}
           </div>
         ))}
       </div>

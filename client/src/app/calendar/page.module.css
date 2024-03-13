@@ -29,6 +29,10 @@
   border-radius: 20px;
 }
 
+.notMonth {
+  color: var(--accentGreen2);
+}
+
 .weekDays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);

@@ -1,34 +1,51 @@
 //year
 const year = new Date().getFullYear();
+const lastYear = year - 1;
+const nextYear = year + 1;
 
 //months
-let month = new Date().getMonth();
-const prevMonth = month - 1;
-const nextMonth = month + 1;
-console.log(nextMonth);
+//month
+let month = new Date().getMonth(); //from 0 - 11 (jan - dec)
 
 //what day does month start on
 const startWeekDay = new Date(year, month, 1).getDay();
 
 //days in month
-const daysInMonth = (year, month) => {
+const daysInGivenMonth = (year, month) => {
   return new Date(year, month + 1, 0).getDate();
 };
 
-const daysBeforeStart = Array.from(
-  { length: startWeekDay },
-  (_, i) => `placeholder-${i}`
-);
-
 // Calculate days of the month
-const daysOfMonth = Array.from(
-  { length: daysInMonth(year, month) },
+const daysOfCurrMonth = Array.from(
+  { length: daysInGivenMonth(year, month) },
   (_, i) => i + 1
 );
 
-const daysAfterStart = Array.from(
-  { length: 42 - (daysOfMonth.length + daysBeforeStart.length) },
-  (_, i) => `placeholder-${i}`
-);
+//calculate days before month starts
+function findDaysBeforeStart() {
+  const prevMonth = month - 1;
+  const daysOfPrevMonth = Array.from(
+    { length: daysInGivenMonth(year, prevMonth) },
+    (_, i) => i + 1
+  );
+  const daysToExtract = startWeekDay;
+  return daysOfPrevMonth.slice(-daysToExtract);
+}
 
-const days = [...daysBeforeStart, ...daysOfMonth, ...daysAfterStart];
+//calculate days after month ends
+function findDaysAfterStart() {
+  const nextMonth = month + 1;
+  const daysOfNextMonth = Array.from(
+    { length: daysInGivenMonth(year, nextMonth) },
+    (_, i) => i + 1
+  );
+  const daysToExtract = 42 - (daysOfCurrMonth.length + daysBeforeStart.length);
+  return daysOfNextMonth.slice(0, daysToExtract);
+}
+
+const daysBeforeStart = findDaysBeforeStart();
+const daysAfterStart = findDaysAfterStart();
+
+const days = [...daysBeforeStart, ...daysOfCurrMonth, ...daysAfterStart];
+
+console.log(days);
