@@ -1,20 +1,20 @@
 import styles from "./btn.module.css";
 
-function NextBtn() {
+function RightBtn() {
   return (
-    <button className={styles.next}>
-      {/* <img className={styles.svg} src="/rightArrow.svg"></img> */}
+    <button className={styles.right}>
       <svg
-        width="64px"
-        height="64px"
+        width="75px"
+        height="75px"
         strokeWidth="1.5"
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        color="#e5fcf5"
       >
         <path
           d="M9 6L15 12L9 18"
-          stroke="#E5FCF5"
+          stroke="#c5efcb"
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -24,4 +24,4 @@ function NextBtn() {
   );
 }
 
-export default NextBtn;
+export default RightBtn;
