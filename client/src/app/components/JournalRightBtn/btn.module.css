@@ -1,0 +1,24 @@
+.right {
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border-style: none;
+  background-color: var(--darkGreen);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.right:hover {
+  background-color: var(--accentGreen1);
+}
+
+.right path {
+  transition: stroke 0.3s ease;
+}
+
+.right:hover path {
+  stroke: var(--darkGreen);
+}
