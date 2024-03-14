@@ -5,13 +5,11 @@ import Link from "next/link";
 function Navbar(){
 
     return (
-
         <div className={styles.link}>
-            <Link href="/">Journal</Link>
-            <Link href="/">Emoji Page</Link>
-            <Link href="/">Calendar</Link>
+            <Link href="/journal">Journal</Link>
+            <Link href="/rating">Emoji Page</Link>
+            <Link href="/calendar">Calendar</Link>
         </div>
-            
     );
 }
 
