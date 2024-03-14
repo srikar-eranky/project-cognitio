@@ -1,6 +1,8 @@
 import styles from './page.module.css'
+import Navbar from '../components/Navbar/navbar';
 
 function JournalGreeting(){
+
     let newDate = new Date()
     let date = newDate.getDate();
     let month = newDate.getMonth() + 1;
@@ -47,6 +49,7 @@ function JournalGreeting(){
     return (
         <div className={styles.background_container}>
         <div className={styles.title_container}>
+            <Navbar />
             <h1 className={styles.title}>Journal</h1>
         </div>
 
