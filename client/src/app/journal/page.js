@@ -57,8 +57,11 @@ function JournalGreeting() {
         `}
       </style>
       <div className={styles.background_container}>
+        <div style={{width: "fit-content"}}>
+          <Navbar />
+        </div>
+        
         <div className={styles.title_container}>
-            <Navbar />
             <h1 className={styles.title}>Journal</h1>
         </div>
 

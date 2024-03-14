@@ -28,19 +28,11 @@ function Navbar(){
                 </div>
             </div>
 
-            {/*hamburger button and log in button*/}
-            <div className={styles.topRow}>
-
-                <div className={styles.image}>
-                    <Image src={menu} width={24} height={24} alt='menu' onClick={() => 
-                    {setOpen(true); console.log(isOpen)}} />
-                </div>
-
-                <div>
-                    <LogInBtn />
-                </div>
+            {/*hamburger button*/}
+            <div className={styles.image}>
+                <Image src={menu} width={24} height={24} alt='menu' onClick={() => 
+                {setOpen(true); console.log(isOpen)}} />
             </div>
-
         </div>
     );
 }

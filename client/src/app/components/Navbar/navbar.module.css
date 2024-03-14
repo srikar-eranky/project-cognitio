@@ -44,10 +44,4 @@
     padding-right: 20px;
     margin-right: 15px;
 }
-  
-.topRow {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
 

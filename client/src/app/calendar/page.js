@@ -82,7 +82,7 @@ function CreateCalendarDisplay() {
 
   return (
     <>
-      <div style={{marginBottom: "20px"}}>
+      <div style={{marginBottom: "20px", width: "fit-content"}}>
         <Navbar />
       </div>
       <style js="true" global="true">
