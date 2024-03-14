@@ -19,6 +19,7 @@
 }
 
 .day {
+  cursor: pointer;
   background-color: var(--mainText);
   color: var(--darkGreen);
   display: flex;

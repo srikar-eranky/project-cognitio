@@ -23,9 +23,14 @@ function CreateCalendarDisplay() {
 
   //calculate days before month starts
   function findDaysBeforeStart() {
-    const prevMonth = month - 1;
+    let prevMonth = month - 1;
     const daysOfPrevMonth = Array.from(
-      { length: daysInGivenMonth(year, prevMonth) },
+      {
+        length: daysInGivenMonth(
+          prevMonth === -1 ? year - 1 : year,
+          prevMonth === -1 ? (prevMonth = 11) : prevMonth
+        ),
+      },
       (_, i) => i + 1
     );
     const daysToExtract = startWeekDay;
@@ -36,9 +41,14 @@ function CreateCalendarDisplay() {
 
   //calculate days after month ends
   function findDaysAfterStart() {
-    const nextMonth = month + 1;
+    let nextMonth = month + 1;
     const daysOfNextMonth = Array.from(
-      { length: daysInGivenMonth(year, nextMonth) },
+      {
+        length: daysInGivenMonth(
+          nextMonth === 12 ? year + 1 : year,
+          nextMonth === 12 ? (nextMonth = 0) : nextMonth
+        ),
+      },
       (_, i) => i + 1
     );
     const daysToExtract =
