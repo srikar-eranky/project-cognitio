@@ -17,7 +17,7 @@ function RatingGreeting() {
 
   return (
     <div>
-      <div>
+      <div style={{width: "fit-content"}}>
         <Navbar />
       </div>
       <>
