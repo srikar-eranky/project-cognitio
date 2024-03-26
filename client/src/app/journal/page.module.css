@@ -1,6 +1,5 @@
 .title{
-    color: var(--accentGreen2);
-    color: var(--darkGreen);
+    color: var(--mainText);
     padding: 3vh;
     height:200px;
     font-size:8vh;
@@ -38,12 +37,18 @@
 
 .date{
     font-size: 20px;
-    color: var(--accentGreen);
     padding-bottom: 20px;
+    color: var(--mainText);
 }
 
 .prompt{
-    font-size: 5vh;
+    font-size: 4vh;
+}
+
+.divider{
+    background-color: var(--accentGreen1);
+    width: 5px;
+    margin: 20px;
 }
 
 .textbox{
@@ -54,6 +59,8 @@
     background-color: transparent;
     font-size: 16px;
     padding: 10px;
+    color: var(--mainText);
+    border: none;
 }
 
 .arrows_left{
