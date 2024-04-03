@@ -73,26 +73,23 @@ function JournalGreeting() {
             </h1>
             <h3 className={styles.prompt}>Fill with prompt</h3>
           </div>
-          <div className={styles.divider}>
-          </div>
+          <div className={styles.divider}></div>
           <div className={styles.right_container}>
             <textarea
               className={styles.textbox}
               placeholder="Spill your guts here"
-              autofocus="autofocus"
+              autoFocus="autoFocus"
               rows="100"
               cols="500"
             ></textarea>
             <style>
-              {
-                `::placeholder{
+              {`::placeholder{
                     color: var(--mainText);
                 }
                 :focus{
                   outline: none;
-                }`
-              }
-              </style>
+                }`}
+            </style>
           </div>
           <div className={styles.arrows_right}>
             {/* <span class="material-symbols-outlined">
