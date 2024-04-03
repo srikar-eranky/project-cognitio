@@ -1,3 +1,4 @@
+import Navbar from "../components/Navbar/navbar";
 import styles from "./page.module.css";
 
 function CreateCalendarDisplay() {
@@ -81,6 +82,9 @@ function CreateCalendarDisplay() {
 
   return (
     <>
+      <div style={{marginBottom: "20px", width: "fit-content"}}>
+        <Navbar />
+      </div>
       <style js="true" global="true">
         {`
       body {

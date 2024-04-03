@@ -10,6 +10,7 @@ import rating7 from ".//ratingFaces/rating7.svg";
 import rating8 from ".//ratingFaces/rating8.svg";
 import rating9 from ".//ratingFaces/rating9.svg";
 import rating10 from ".//ratingFaces/rating10.svg";
+import Navbar from "../Navbar/navbar";
 
 export const faces = [
   {
@@ -92,12 +93,12 @@ function Emoji({ rating, isActive, onClick }) {
 
   const { face, hover, active } = faces[rating - 1];
   return (
-    <div
-      className={`${styles.circle} ${isActive ? active : hover}`}
-      onClick={() => onClick(rating)}
-    >
-      <Image src={getRatingSrc()} alt="Rating face" className={face} />
-    </div>
+        <div
+          className={`${styles.circle} ${isActive ? active : hover}`}
+          onClick={() => onClick(rating)}
+        >
+          <Image src={getRatingSrc()} alt="Rating face" className={face} />
+        </div>
   );
 }
 
