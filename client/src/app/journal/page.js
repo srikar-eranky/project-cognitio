@@ -1,6 +1,7 @@
 import styles from "./page.module.css";
 import RightBtn from "../components/JournalRightBtn/btn";
 import LeftBtn from "../components/JournalLeftBtn/btn";
+import Navbar from '../components/Navbar/navbar';
 
 function JournalGreeting() {
   let newDate = new Date();
@@ -56,8 +57,12 @@ function JournalGreeting() {
         `}
       </style>
       <div className={styles.background_container}>
+        <div style={{width: "fit-content"}}>
+          <Navbar />
+        </div>
+        
         <div className={styles.title_container}>
-          <h1 className={styles.title}>Journal</h1>
+            <h1 className={styles.title}>Journal</h1>
         </div>
 
         <div className={styles.book}>
