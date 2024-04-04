@@ -92,6 +92,7 @@ function CreateCalendarDisplay() {
       {/* <div style={{ marginBottom: "20px", width: "fit-content" }}>
         <Navbar />
       </div> */}
+      <Navbar />
       <h1 className={styles.title}>Calendar</h1>
       <div className={styles.weekDaysContainer}>
         <div className={styles.weekDays}>
