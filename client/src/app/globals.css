@@ -19,7 +19,7 @@
 
 body {
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: clip;
   height: 100vh;
   /* background-image: linear-gradient(12.8deg, #C5EFCB -29.07%, #5B7F77 94.75%), url('../../public/vector.svg'); */
   background-image: url("../../public/vector.svg"),
