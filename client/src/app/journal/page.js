@@ -59,6 +59,7 @@ function JournalGreeting() {
       {/* <div style={{ width: "fit-content" }}>
         <Navbar />
       </div> */}
+      <Navbar />
       <h1 className={styles.title}>Journal</h1>
       <div className={styles.bookContainer}>
         <LeftBtn />
