@@ -82,9 +82,6 @@ function CreateCalendarDisplay() {
 
   return (
     <>
-      <div style={{marginBottom: "20px", width: "fit-content"}}>
-        <Navbar />
-      </div>
       <style js="true" global="true">
         {`
       body {
@@ -92,7 +89,9 @@ function CreateCalendarDisplay() {
        }
         `}
       </style>
-
+      {/* <div style={{ marginBottom: "20px", width: "fit-content" }}>
+        <Navbar />
+      </div> */}
       <h1 className={styles.title}>Calendar</h1>
       <div className={styles.weekDaysContainer}>
         <div className={styles.weekDays}>

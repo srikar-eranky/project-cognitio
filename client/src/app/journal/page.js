@@ -1,7 +1,7 @@
 import styles from "./page.module.css";
 import RightBtn from "../components/JournalRightBtn/btn";
 import LeftBtn from "../components/JournalLeftBtn/btn";
-import Navbar from '../components/Navbar/navbar';
+import Navbar from "../components/Navbar/navbar";
 
 function JournalGreeting() {
   let newDate = new Date();
@@ -56,56 +56,37 @@ function JournalGreeting() {
        }
         `}
       </style>
-      <div className={styles.background_container}>
-        <div style={{width: "fit-content"}}>
-          <Navbar />
-        </div>
-        
-        <div className={styles.title_container}>
-            <h1 className={styles.title}>Journal</h1>
-        </div>
-
-        <div className={styles.book}>
-          <div className={styles.arrows_left}>
-            {/* <span class="material-symbols-outlined">
-                    arrow_back_ios
-                </span> */}
-            <LeftBtn />
-          </div>
-          <div className={styles.left_container}>
-            <h1 className={styles.date}>
-              {month} {date}, {year}
-            </h1>
-            <h3 className={styles.prompt}>Fill with prompt</h3>
-          </div>
-          <div className={styles.divider}>
-          </div>
-          <div className={styles.right_container}>
-            <textarea
-              className={styles.textbox}
-              placeholder="Spill your guts here"
-              autofocus="autofocus"
-              rows="100"
-              cols="500"
-            ></textarea>
-            <style>
-              {
-                `::placeholder{
-                    color: var(--mainText);
+      {/* <div style={{ width: "fit-content" }}>
+        <Navbar />
+      </div> */}
+      <h1 className={styles.title}>Journal</h1>
+      <div className={styles.bookContainer}>
+        <LeftBtn />
+        <img className={styles.book} src="book.svg"></img>
+        <div className={styles.textBoxContainer}>
+          <textarea
+            className={styles.textbox}
+            placeholder="Spill your guts here"
+            autoFocus="autoFocus"
+            rows="17"
+            cols="35"
+          ></textarea>
+          <style>
+            {`::placeholder{
+                    color: var(--darkGreen);
                 }
                 :focus{
                   outline: none;
-                }`
-              }
-              </style>
-          </div>
-          <div className={styles.arrows_right}>
-            {/* <span class="material-symbols-outlined">
-                    arrow_forward_ios
-                </span> */}
-            <RightBtn />
-          </div>
+                }`}
+          </style>
         </div>
+        <div className={styles.promptContainer}>
+          <h3 className={styles.date}>
+            {month} {date} , {year}
+          </h3>
+          <h2 className={styles.prompt}>Prompt goes here</h2>
+        </div>
+        <RightBtn />
       </div>
     </>
   );
