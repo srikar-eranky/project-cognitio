@@ -4,6 +4,7 @@
   "description": "Template for building projects with the MERN (MongoDB, Express, React, Node.js) stack. This template was generated using `create-next-app` and `express-generator` for the client and server, respectively.",
   "main": "index.js",
   "scripts": {
+    "start": "node ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
