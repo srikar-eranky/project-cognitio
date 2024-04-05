@@ -1,9 +1,30 @@
+"use client";
+
 import styles from "./page.module.css";
 import RightBtn from "../components/JournalRightBtn/btn";
 import LeftBtn from "../components/JournalLeftBtn/btn";
 import Navbar from "../components/Navbar/navbar";
+import promptsData from "./prompts.json";
+import { useState, useEffect } from "react";
 
 function JournalGreeting() {
+  const [prompt, setPrompt] = useState("");
+
+  useEffect(() => {
+    // Fetch a new random prompt when the component mounts
+    generateRandomPrompt();
+  }, []);
+
+  useEffect(() => {
+    // Update the prompt when the date changes (i.e., once per day)
+    generateRandomPrompt();
+  }, [new Date().getDate()]); // This effect will run whenever the date changes
+
+  const generateRandomPrompt = () => {
+    const randomIndex = Math.floor(Math.random() * promptsData.prompts.length);
+    setPrompt(promptsData.prompts[randomIndex]);
+  };
+
   let newDate = new Date();
   let date = newDate.getDate();
   let month = newDate.getMonth() + 1;
@@ -56,9 +77,6 @@ function JournalGreeting() {
        }
         `}
       </style>
-      {/* <div style={{ width: "fit-content" }}>
-        <Navbar />
-      </div> */}
       <Navbar />
       <h1 className={styles.title}>Journal</h1>
       <div className={styles.bookContainer}>
@@ -68,8 +86,8 @@ function JournalGreeting() {
           <textarea
             className={styles.textbox}
             placeholder="Spill your guts here"
-            autoFocus="autoFocus"
-            rows="17"
+            autoFocus
+            rows="15"
             cols="35"
           ></textarea>
           <style>
@@ -80,12 +98,13 @@ function JournalGreeting() {
                   outline: none;
                 }`}
           </style>
+          <button className={styles.submit}>Log Entry</button>
         </div>
         <div className={styles.promptContainer}>
           <h3 className={styles.date}>
             {month} {date} , {year}
           </h3>
-          <h2 className={styles.prompt}>Prompt goes here</h2>
+          <h2 className={styles.prompt}>{prompt}</h2>
         </div>
         <RightBtn />
       </div>
