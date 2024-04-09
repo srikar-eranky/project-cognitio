@@ -1,0 +1,48 @@
+.form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 2rem;
+  font-family: var(--outfit);
+  color: var(--mainText);
+}
+
+.inputField {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  color: var(--darkGreen);
+}
+
+.inputField:focus {
+  border-color: var(--accentGreen1);
+  box-shadow: var(--accentGreen2);
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
+  border-radius: 10px;
+  border-style: none;
+  background-color: var(--mainText);
+  cursor: pointer;
+  font-family: var(--outfit);
+  font-size: 1.8rem;
+  color: var(--darkGreen);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.login:hover {
+  background-color: var(--darkGreen);
+  color: var(--mainText);
+}
