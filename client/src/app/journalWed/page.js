@@ -1,5 +1,10 @@
-import Link from '"next/link"'
-const tuesdayJournal = () => {
+import styles from "./page.module.css";
+import RightBtn from "../components/JournalRightBtn/btn";
+import LeftBtn from "../components/JournalLeftBtn/btn";
+import Navbar from "../components/Navbar/navbar";
+import Link from 'next/link'
+
+const journalGreeting = () => {
     return (  
         <>
       <style js="true" global="true">
@@ -12,8 +17,8 @@ const tuesdayJournal = () => {
       <Navbar />
       <h1 className={styles.title}>Journal</h1>
       <div className={styles.bookContainer}>
-        <Link> 
-        <LeftBtn href="./tues.js"/> 
+        <Link href="../../journalTues"> 
+        <LeftBtn/> 
         </Link>
         
         <img className={styles.book} src="book.svg"></img>
@@ -27,10 +32,12 @@ const tuesdayJournal = () => {
           <h2 className={styles.prompt}> What are three things you appreciate about your life right now?
           </h2>
         </div>
-        <RightBtn />
+        <Link href="../../journalThree">
+          <RightBtn />
+        </Link>
       </div>
     </>
     );
 }
  
-export default tuesdayJournal;
+export default journalGreeting;

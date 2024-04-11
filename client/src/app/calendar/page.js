@@ -115,9 +115,14 @@ function CreateCalendarDisplay() {
           >
             {day === 11 ? (
               <Link href="/journalThree" style={{textDecoration: "none", color: "var(--darkGreen)"}}>{day}</Link>
+            ) : day === 10 ? (
+              <Link href="/journalWed" style={{textDecoration: "none", color: "var(--darkBlue)"}}>{day}</Link>
+            ) : day === 9 ? (
+              <Link href="/journalTues" style={{textDecoration: "none", color: "var(--darkRed)"}}>{day}</Link>
             ) : (
               day
             )}
+            
           </div>
         ))}
       </div>

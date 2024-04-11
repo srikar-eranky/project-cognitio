@@ -5,6 +5,7 @@ import RightBtn from "../components/JournalRightBtn/btn";
 import LeftBtn from "../components/JournalLeftBtn/btn";
 import Navbar from "../components/Navbar/navbar";
 import promptsData from "./prompts.json";
+import Link from 'next/link'
 import { useState, useEffect } from "react";
 
 function JournalGreeting() {
@@ -83,7 +84,9 @@ function JournalGreeting() {
       <Navbar />
       <h1 className={styles.title}>Journal</h1>
       <div className={styles.bookContainer}>
-        <LeftBtn />
+        <Link href="../../journalWed">
+          <LeftBtn />
+        </Link>
         <img className={styles.book} src="book.svg"></img>
         <div className={styles.textBoxContainer}>
           <textarea
