@@ -1,4 +1,9 @@
 import Link from 'next/link'
+import styles from "./page.module.css";
+import RightBtn from "../components/JournalRightBtn/btn";
+import LeftBtn from "../components/JournalLeftBtn/btn";
+import Navbar from "../components/Navbar/navbar";
+
 const tuesdayJournal = () => {
     return (  
         <>
@@ -15,7 +20,7 @@ const tuesdayJournal = () => {
         <LeftBtn />
         <img className={styles.book} src="book.svg"></img>
         <div className={styles.textBoxContainer}>
-        This week, I learned the importance of taking breaks and stepping away from work or studying periodically. I tend to get caught up in tasks and keep pushing myself without breaks, thinking it will make me more productive. However, I noticed that taking short breaks actually helps me stay focused and refreshed. It's like giving my brain a chance to reset and come back with renewed energy. So, I've been incorporating more regular breaks into my schedule, whether it's a quick walk outside, a few minutes of stretching, or just a moment to relax and breathe. It's made a noticeable difference in my productivity and overall well-being.
+        This week, I learned the importance of taking breaks and stepping away from work or studying periodically. I tend to get caught up in tasks and keep pushing myself without breaks, thinking it will make me more productive. However, I noticed that taking short breaks actually helps me stay focused and refreshed. It's like giving my brain a chance to reset and come back with renewed energy.
         </div>
         <div className={styles.promptContainer}>
           <h3 className={styles.date}>
@@ -24,8 +29,8 @@ const tuesdayJournal = () => {
           <h2 className={styles.prompt}>Write about a lesson you learned this week.
           </h2>
         </div>
-        <Link href="./wed.js">
-        <RightBtn />
+        <Link href="../../journalWed">
+          <RightBtn/>
         </Link>
       </div>
     </>
