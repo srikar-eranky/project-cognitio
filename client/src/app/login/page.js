@@ -1,6 +1,20 @@
+"use client";
+
+import { useState } from "react";
 import styles from "./page.module.css";
+import { useRouter } from "next/navigation";
 
 function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    localStorage.setItem("isLoggedIn", "true");
+    router.push("/");
+  };
+
   return (
     <>
       <style js="true" global="true">
@@ -11,13 +25,15 @@ function Login() {
         }
           `}
       </style>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <label htmlFor="username">Username:</label>
         <input
           type="text"
           className={styles.inputField}
           id="username"
           name="username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           required
         />
         <br />
@@ -29,6 +45,8 @@ function Login() {
           className={styles.inputField}
           id="password"
           name="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           required
         />
         <br />
