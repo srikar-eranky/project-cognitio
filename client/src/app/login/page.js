@@ -2,36 +2,17 @@
 
 import { useState } from "react";
 import styles from "./page.module.css";
+import { useRouter } from "next/navigation";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-
-    try {
-      // Send a request to your backend API to authenticate the user
-      const response = await fetch("/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
-
-      if (response.ok) {
-        // Authentication successful
-        // You may want to redirect the user to another page or perform some action
-        console.log("Authentication successful");
-      } else {
-        // Authentication failed
-        // You may want to display an error message to the user
-        console.error("Authentication failed");
-      }
-    } catch (error) {
-      console.error("Error occurred while authenticating:", error);
-    }
+    localStorage.setItem("isLoggedIn", "true");
+    router.push("/");
   };
 
   return (

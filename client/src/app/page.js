@@ -1,25 +1,24 @@
-import styles from './page.module.css'
-import Navbar from './components/Navbar/navbar'
-import CalendarGreeting from './calendar/page'
-import JournalGreeting from './journal/page'
-import Emoji from './components/Emoji/emoji'
-import LogInBtn from './components/LogInBtn/btn'
+"use client";
+import { useEffect, useState } from "react";
+import LogInBtn from "./components/LogInBtn/btn";
+import Navbar from "./components/Navbar/navbar";
+import styles from "./page.module.css";
 
 export default function Home() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const storedIsLoggedIn = localStorage.getItem("isLoggedIn");
+    if (storedIsLoggedIn === "true") {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   return (
     <main className={styles.main}>
-
       <div className={styles.topRow}>
-        <div>
-          <Navbar />
-        </div>
-        
-        <div>
-          <LogInBtn />
-        </div>
+        {!isLoggedIn ? <LogInBtn /> : <Navbar />}
       </div>
-
 
       <div className={styles.titleContainer}>
         <p className={styles.intro}>WELCOME TO THE</p>
@@ -27,8 +26,6 @@ export default function Home() {
           Project <span>Cognitio</span>
         </h1>
       </div>
-
-      
     </main>
   );
 }
