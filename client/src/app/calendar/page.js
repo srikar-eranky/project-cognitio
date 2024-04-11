@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar/navbar";
 import styles from "./page.module.css";
+import Link from "next/link";
 
 function CreateCalendarDisplay() {
   //year
@@ -112,7 +113,11 @@ function CreateCalendarDisplay() {
             key={key}
             className={`${styles.day} ${isntMonth ? styles.notMonth : ""}`}
           >
-            {day}
+            {day === 11 ? (
+              <Link href="/journalThree" style={{textDecoration: "none", color: "var(--darkGreen)"}}>{day}</Link>
+            ) : (
+              day
+            )}
           </div>
         ))}
       </div>
