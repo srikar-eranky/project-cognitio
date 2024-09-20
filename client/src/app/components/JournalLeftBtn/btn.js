@@ -1,8 +1,8 @@
 import styles from "./btn.module.css";
 
-function LeftBtn() {
+function LeftBtn({ onClick }) {
   return (
-    <button className={styles.left}>
+    <button onClick={onClick} className={styles.left}>
       <svg
         width="75px"
         height="75px"

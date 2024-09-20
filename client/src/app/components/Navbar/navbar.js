@@ -1,13 +1,24 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./navbar.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import menu from "../../../../public/hamburger-menu-icon.svg";
 import LogInBtn from "../LogInBtn/btn";
+import LogOut from "../LogOutBtn/btn";
 
 function Navbar() {
   const [isOpen, setOpen] = useState(false);
+  const [date, setDate] = useState(null);
+
+  useEffect(() => {
+    setCurrentDate();
+  }, [])
+
+  const setCurrentDate = () => {
+    const now = new Date();
+    setDate(`${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`);
+  }
 
   return (
     <div className={styles.navContainer}>
@@ -33,9 +44,10 @@ function Navbar() {
 
         <div className={styles.link}>
           <Link href="/">Home</Link>
-          <Link href="/journal">Journal</Link>
+          <Link href={"/journal"}>Journal</Link>
           <Link href="/rating">Emoji Page</Link>
           <Link href="/calendar">Calendar</Link>
+          <LogOut />
         </div>
       </div>
 
