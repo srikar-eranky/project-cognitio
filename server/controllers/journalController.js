@@ -1,10 +1,11 @@
+const { ObjectId } = require("mongodb");
 const JournalEntry = require("../models/journalEntryModel");
 const mongoose = require("mongoose");
 
 const getEntry = async (req, res) => {
     const { id, date } = req.params;
-    const queryId = new mongoose.Types.ObjectId(id);
-    const queryDate = new Date(date);
+    const queryId = id;
+    const queryDate = date;
 
     if(!id) {
         return res.status(400).json({error: "No id"})
@@ -16,15 +17,15 @@ const getEntry = async (req, res) => {
 
     try {
         const journalEntry = await JournalEntry.findOne({
-            date: { $eq: queryDate },
-            userId: queryId
+            userId: queryId,
+            date: queryDate
         })
 
         if(!journalEntry) {
-            return res.status(404).json(null);
+            return res.status(404).json({error: "Entry not found"});
         }
 
-        return res.status(200).json(journalEntry);
+        return res.status(200).json({journal: journalEntry});
     } catch (error) {
         return res.status(500).json({error: error.message});
     }

@@ -14,14 +14,15 @@ const journalEntrySchema = new mongoose.Schema({
     default: 'Nothing here!'
   },
   date: {
-    type: Date,
+    type: String,
     default: function() {
-        const now = new Date()
-        return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const now = new Date();
+        const formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+        return formattedDate;
     },
   },
   userId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: String,
     required: true,
     ref: 'User' // This matches the model name as registered in userModel.js
   }

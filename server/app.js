@@ -20,7 +20,7 @@ app.use((req,res,next) => {
 
 // routes
 app.use('/api/journals', entryRoutes);
-app.use('/api/calendars', calendarRoutes)
+app.use('/api/moods', calendarRoutes)
 app.use('/api/users', userRoutes)
 
 //connect to db

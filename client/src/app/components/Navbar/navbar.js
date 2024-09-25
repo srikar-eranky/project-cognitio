@@ -44,7 +44,7 @@ function Navbar() {
 
         <div className={styles.link}>
           <Link href="/">Home</Link>
-          <Link href={"/journal"}>Journal</Link>
+          <Link href={`/journal?date=${date}`}>Journal</Link>
           <Link href="/rating">Emoji Page</Link>
           <Link href="/calendar">Calendar</Link>
           <LogOut />

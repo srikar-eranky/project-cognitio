@@ -7,27 +7,30 @@ import Navbar from "../components/Navbar/navbar";
 import promptsData from "./prompts.json";
 import Link from 'next/link'
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 function JournalGreeting() {
+  const router = useRouter();
+  const param = useSearchParams();
+  const date = param.get("date");
+  console.log(date);
   const [prompt, setPrompt] = useState("");
   const [content, setContent] = useState("");
   const [journal, setJournal] = useState(null);
-  const [date, setDate] = useState(null);
   const user = JSON.parse(localStorage.getItem("user"));
+  const todayDate = new Date();
+  const today = `${todayDate.getFullYear()}-${String(todayDate.getMonth() + 1).padStart(2, '0')}-${String(todayDate.getDate()).padStart(2, '0')}`;
 
   useEffect(() => {
     // Fetch a new random prompt when the component mounts
-    setCurrentDate();
-    generateRandomPrompt();
-    if(date) {
-        getEntry();
+    if(date){
+      console.log("This is being re-rendered");
+      getEntry();
+    } else {
+      console.log("no date");
     }
   }, [date]);
-
-  const setCurrentDate = () => {
-    const currDate = new Date();
-    updateDate(new Date(currDate.getFullYear(), currDate.getMonth(), currDate.getDay()));
-  }
 
   const generateRandomPrompt = () => {
     const randomIndex = Math.floor(Math.random() * promptsData.prompts.length);
@@ -36,19 +39,23 @@ function JournalGreeting() {
 
   const updateDate = (newDate) => {
     const formattedDate = `${newDate.getFullYear()}-${String(newDate.getMonth() + 1).padStart(2, '0')}-${String(newDate.getDate()).padStart(2, '0')}`;
-    setDate(formattedDate);
+    return formattedDate;
   };
 
   const prevDayChange = () => {
-    const currentDate = new Date(date);
+    const [year, month, day] = date.split('-').map(Number);
+    const currentDate = new Date(year, month - 1, day);
     currentDate.setDate(currentDate.getDate() - 1);
-    updateDate(currentDate);
+    const finalDate = updateDate(currentDate);
+    router.push(`/journal?date=${finalDate}`);
   };
 
   const nextDayChange = () => {
-    const currentDate = new Date(date);
+    const [year, month, day] = date.split('-').map(Number);
+    const currentDate = new Date(year, month - 1, day);
     currentDate.setDate(currentDate.getDate() + 1);
-    updateDate(currentDate);
+    const finalDate = updateDate(currentDate);
+    router.push(`/journal?date=${finalDate}`);
   };
 
   const getEntry = async () => {
@@ -59,15 +66,20 @@ function JournalGreeting() {
                 "Content-Type": "application/json"
             }
         })
+
         if(!response.ok) {
-            throw new Error("network error" + response.statusText);
-        }
-        const data = await response.json()
-        if(data === null) {
+          if(response.status === 404){
             setJournal(null);
+            generateRandomPrompt();
+            setContent("");
+          }
+          throw new Error("network error" + response.statusText);
         } else {
-            setJournal(data);
-            setContent(data.content);
+          const data = await response.json();
+          console.log(data.journal);
+          setJournal(data);
+          setContent(data.journal.content);
+          setPrompt(data.journal.prompt);
         }
     } catch (error) {
         console.error(error.message);
@@ -92,7 +104,8 @@ function JournalGreeting() {
             throw new Error("Network error " + response.statusText)
         }
         const data = await response.json()
-        console.log(data)
+        console.log(data);
+        router.push('/rating');
     } catch (error) {
         console.error(error.message)
     }
@@ -119,7 +132,7 @@ function JournalGreeting() {
             autoFocus
             rows="15"
             cols="35"
-            value={content}
+            value={content || ""}
             onChange={(event) => setContent(event.target.value)}
           ></textarea>
           <style>
@@ -130,7 +143,9 @@ function JournalGreeting() {
                   outline: none;
                 }`}
           </style>
-          <button onClick={submitEntry} className={styles.submit}>Log Entry</button>
+          {journal === null && (
+            <button onClick={submitEntry} className={styles.submit}>Log Entry</button>
+          )}
         </div>
         <div className={styles.promptContainer}>
           <h3 className={styles.date}>
@@ -138,7 +153,9 @@ function JournalGreeting() {
           </h3>
           <h2 className={styles.prompt}>{prompt}</h2>
         </div>
-        <RightBtn onClick={nextDayChange} />
+        {date !== today && (
+          <RightBtn onClick={nextDayChange} />
+        )}
       </div>
     </>
   );

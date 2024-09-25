@@ -42,7 +42,6 @@ function Login() {
         {`
         body {
             background: linear-gradient(12.8deg, #C5EFCB -29.07%, #5B7F77 94.75%);
-            margin-bottom: 20px;
         }
           `}
       </style>

@@ -1,6 +1,8 @@
 const express = require('express');
-const Mood = require('../models/moodModel');
 const router = express.Router();
+const {
+    createMood
+} = require('../controllers/moodController');
 
 /* GET calendar moods for a specified array of dates. */
 router.get('/calendar', async function(req, res, next) {
@@ -34,31 +36,6 @@ router.get('/calendar', async function(req, res, next) {
 });
 
 // Create/Update a Mood Rating for a specified date
-router.post('/rating', async function(req, res, next) {
-    try {
-        const {date, rating} = req.body;
-        const userId = req.user._id;
-
-        let mood = await Mood.findOne({
-            date: date,
-            userId: userId
-        })
-
-        if (!mood) {
-            mood = new Mood({
-                userId,
-                rating,
-                date
-            })
-        } else {
-            mood.rating = rating;
-        }
-
-        await mood.save();
-    } catch (err) {
-        console.log('Error saving mood entry: ', err);
-        res.status(500).json({message: 'Internal Server Error'});
-    }
-})
+router.post('/', createMood);
 
 module.exports = router;

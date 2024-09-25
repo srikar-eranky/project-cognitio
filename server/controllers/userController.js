@@ -25,6 +25,13 @@ const createUser = async (req, res) => {
     const { firstName, lastName, username, password } = req.body;
 
     try {
+        const existingUser = await User.findOne({ username: username });
+
+        if (existingUser) {
+            // If user exists, return a conflict status code (409)
+            return res.status(200).json(existingUser);
+        }
+
         const newUser = await User.create({ firstName, lastName, username, password })
         return res.status(200).json(newUser)
     } catch (err) {
