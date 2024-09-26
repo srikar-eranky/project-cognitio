@@ -60,7 +60,7 @@ function JournalGreeting() {
 
   const getEntry = async () => {
     try {
-        const response = await fetch(`http://localhost:5000/api/journals/${user._id}/${date}/`, {
+        const response = await fetch(`https://project-cognitio.onrender.com/api/journals/${user._id}/${date}/`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -88,7 +88,7 @@ function JournalGreeting() {
 
   const submitEntry = async () => {
     try {
-        const response = await fetch('http://localhost:5000/api/journals/', {
+        const response = await fetch('https://project-cognitio.onrender.com/api/journals/', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

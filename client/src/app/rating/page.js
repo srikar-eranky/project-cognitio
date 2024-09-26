@@ -23,7 +23,7 @@ function RatingGreeting() {
   const submitRating = async () => {
     // post request
     try {
-      const response = await fetch('http://localhost:5000/api/moods/', {
+      const response = await fetch('https://project-cognitio.onrender.com/api/moods/', {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

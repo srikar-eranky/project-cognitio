@@ -51,7 +51,7 @@ function CreateCalendarDisplay() {
 
   const getRatings = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/moods/getMoods/', {
+      const response = await fetch('https://project-cognitio.onrender.com/api/moods/getMoods/', {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
