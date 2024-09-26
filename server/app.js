@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express');
 const cors = require('cors');
 const entryRoutes = require('./routes/entries')
-const calendarRoutes = require('./routes/calendars')
+const moodRoutes = require('./routes/moods')
 const userRoutes = require('./routes/users')
 
 // database
@@ -20,8 +20,8 @@ app.use((req,res,next) => {
 
 // routes
 app.use('/api/journals', entryRoutes);
-app.use('/api/moods', calendarRoutes)
-app.use('/api/users', userRoutes)
+app.use('/api/moods', moodRoutes);
+app.use('/api/users', userRoutes);
 
 //connect to db
 mongoose.connect(process.env.DB_URL).

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const User = require('./userModel'); // Adjust the path as necessary
 
 const moodSchema = new mongoose.Schema({
-  user: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User', // This should match the model name exported in userModel.js
     required: true
@@ -15,10 +15,11 @@ const moodSchema = new mongoose.Schema({
     max: 10,
   },
   date: {
-    type: Date,
+    type: String,
     default: function() {
-        const now = new Date()
-        return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const now = new Date();
+      const formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+      return formattedDate;
     },
     required: true
   }

@@ -1,4 +1,3 @@
-const { ObjectId } = require("mongodb");
 const JournalEntry = require("../models/journalEntryModel");
 const mongoose = require("mongoose");
 

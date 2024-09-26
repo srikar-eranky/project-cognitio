@@ -1,85 +1,84 @@
+"use client";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar/navbar";
 import styles from "./page.module.css";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 function CreateCalendarDisplay() {
-  //year
-  const year = new Date().getFullYear();
+  const router = useRouter();
+  const [ratings, setRatings] = useState([]);
+  const [days, setDays] = useState([]);
+  const user = JSON.parse(localStorage.getItem("user"));
+  useEffect(() => {
+    const year = new Date().getFullYear();
 
-  //month
-  let month = new Date().getMonth(); //from 0 - 11 (jan - dec)
+    //month
+    let month = new Date().getMonth(); //from 0 - 11 (jan - dec)
 
-  //what day does month start on
-  const startWeekDay = new Date(year, month, 1).getDay();
+    //what day does month start on
+    const startWeekDay = new Date(year, month, 1).getDay();
 
-  //days in month
-  const daysInGivenMonth = (year, month) => {
-    return new Date(year, month + 1, 0).getDate();
-  };
+    //days in month
+    const daysInGivenMonth = (year, month) => {
+      return new Date(year, month + 1, 0).getDate();
+    };
 
-  // Calculate days of the month
-  const daysOfCurrMonth = Array.from(
-    { length: daysInGivenMonth(year, month) },
-    (_, i) => i + 1
-  );
+    const formatDate = (year, month, day) => {
+      const formattedMonth = (month + 1).toString().padStart(2, '0'); // Add leading zero for month
+      const formattedDay = day.toString().padStart(2, '0'); // Add leading zero for day
+      return `${year}-${formattedMonth}-${formattedDay}`;
+    };
 
-  //calculate days before month starts
-  function findDaysBeforeStart() {
-    let prevMonth = month - 1;
-    const daysOfPrevMonth = Array.from(
-      {
-        length: daysInGivenMonth(
-          prevMonth === -1 ? year - 1 : year,
-          prevMonth === -1 ? (prevMonth = 11) : prevMonth
-        ),
-      },
-      (_, i) => i + 1
+    const daysOfCurrMonth = Array.from(
+      { length: daysInGivenMonth(year, month) },
+      (_, i) => formatDate(year, month, i+1)
     );
-    const daysToExtract = startWeekDay;
-    return daysOfPrevMonth
-      .slice(-daysToExtract)
-      .map((day) => ({ day, isntMonth: true }));
+
+    setDays([
+      ...daysOfCurrMonth.map((day) => ({
+        day,
+        key: `curr-${Number(day.split('-')[2])}`,
+      }))
+    ]);
+  }, []);
+
+  useEffect(() => {
+    if(days.length > 0){
+      getRatings();
+    }
+  }, [days]);
+
+  const getRatings = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/moods/getMoods/', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          id: user._id,
+          dates: days.map(({ day }) => day)
+        })
+      })
+      if(!response.ok) {
+        throw new Error("Network Error: " + response.statusText);
+      }
+      const data = await response.json()
+      const ratingsObj = data.ratings.reduce((acc, rating) => {
+        acc[rating.date] = rating.rating; // Assuming `rating.date` and `rating.mood`
+        return acc;
+      }, {});
+      setRatings(ratingsObj);
+    } catch(err){
+      console.error(err.message);
+    }
   }
 
-  //calculate days after month ends
-  function findDaysAfterStart() {
-    let nextMonth = month + 1;
-    const daysOfNextMonth = Array.from(
-      {
-        length: daysInGivenMonth(
-          nextMonth === 12 ? year + 1 : year,
-          nextMonth === 12 ? (nextMonth = 0) : nextMonth
-        ),
-      },
-      (_, i) => i + 1
-    );
-    const daysToExtract =
-      42 - (daysOfCurrMonth.length + daysBeforeStart.length);
-    return daysOfNextMonth
-      .slice(0, daysToExtract)
-      .map((day) => ({ day, isntMonth: true }));
+  const getJournal = (event, date) => {
+    event.preventDefault();
+    router.push(`/journal/?date=${date}`);
   }
-
-  const daysBeforeStart = findDaysBeforeStart();
-  const daysAfterStart = findDaysAfterStart();
-
-  const days = [
-    ...daysBeforeStart.map(({ day }) => ({
-      day,
-      isntMonth: true,
-      key: `prev-${day}`,
-    })),
-    ...daysOfCurrMonth.map((day) => ({
-      day,
-      isntMonth: false,
-      key: `curr-${day}`,
-    })),
-    ...daysAfterStart.map(({ day }) => ({
-      day,
-      isntMonth: true,
-      key: `next-${day}`,
-    })),
-  ];
 
   return (
     <>
@@ -108,23 +107,21 @@ function CreateCalendarDisplay() {
       </div>
 
       <div className={styles.container}>
-        {days.map(({ day, isntMonth, key }) => (
-          <div
-            key={key}
-            className={`${styles.day} ${isntMonth ? styles.notMonth : ""}`}
-          >
-            {day === 11 ? (
-              <Link href="/journalThree" style={{textDecoration: "none", color: "var(--darkGreen)"}}>{day}</Link>
-            ) : day === 10 ? (
-              <Link href="/journalWed" style={{textDecoration: "none", color: "var(--darkBlue)"}}>{day}</Link>
-            ) : day === 9 ? (
-              <Link href="/journalTues" style={{textDecoration: "none", color: "var(--darkRed)"}}>{day}</Link>
-            ) : (
-              day
-            )}
-            
-          </div>
-        ))}
+        {days.map(({ day, isntMonth, key }) => {
+          const mood = ratings[day] || "No mood";
+          console.log("Day: ", day);
+          console.log("Rating: ", ratings[day]);
+          return (
+            <div
+              key={key}
+              className={`${styles.day} ${isntMonth ? styles.notMonth : ""}`}
+              onClick={(event) => getJournal(event, day)}
+            >
+              {day}
+              <button>Mood: {mood}</button>
+            </div>
+          )
+        })}
       </div>
     </>
   );

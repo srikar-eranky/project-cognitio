@@ -1,8 +1,8 @@
 import styles from "./btn.module.css";
 
-function NextBtn() {
+function NextBtn({ onClick }) {
   return (
-    <button className={styles.next}>
+    <button onClick={onClick} className={styles.next}>
       {/* <img className={styles.svg} src="/rightArrow.svg"></img> */}
       <svg
         width="64px"
