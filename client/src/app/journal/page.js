@@ -18,19 +18,29 @@ function JournalGreeting() {
   const [prompt, setPrompt] = useState("");
   const [content, setContent] = useState("");
   const [journal, setJournal] = useState(null);
-  const user = JSON.parse(localStorage.getItem("user"));
+  const [user, setUser] = useState(null);
   const todayDate = new Date();
   const today = `${todayDate.getFullYear()}-${String(todayDate.getMonth() + 1).padStart(2, '0')}-${String(todayDate.getDate()).padStart(2, '0')}`;
 
   useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    console.log("Stored User: ", storedUser);
+    if(storedUser) {
+      console.log("Entered if statement");
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  useEffect(() => {
     // Fetch a new random prompt when the component mounts
-    if(date){
+    console.log("User: ", user);
+    if(date && user){
       console.log("This is being re-rendered");
       getEntry();
     } else {
       console.log("no date");
     }
-  }, [date]);
+  }, [user, date]);
 
   const generateRandomPrompt = () => {
     const randomIndex = Math.floor(Math.random() * promptsData.prompts.length);

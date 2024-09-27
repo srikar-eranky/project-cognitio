@@ -7,7 +7,7 @@ const LogOut = () => {
     const handleLogOut = () => {
         localStorage.setItem("isLoggedIn", "false");
         localStorage.setItem("user", "null");
-        router.push("/");
+        window.location.reload();
     }
     return (
         <div>

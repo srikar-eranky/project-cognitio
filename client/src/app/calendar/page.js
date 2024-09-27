@@ -9,8 +9,12 @@ function CreateCalendarDisplay() {
   const router = useRouter();
   const [ratings, setRatings] = useState([]);
   const [days, setDays] = useState([]);
-  const user = JSON.parse(localStorage.getItem("user"));
+  const [user, setUser] = useState(null);
   useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if(storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
     const year = new Date().getFullYear();
 
     //month

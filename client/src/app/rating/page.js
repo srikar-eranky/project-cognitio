@@ -1,7 +1,7 @@
 "use client";
 import styles from "./page.module.css";
 import Emoji from "../components/Emoji/emoji";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { faces } from "../components/Emoji/emoji";
 import NextBtn from "../components/NextBtn/btn";
 import Navbar from "../components/Navbar/navbar";
@@ -11,7 +11,7 @@ function RatingGreeting() {
   const router = useRouter();
   const [activeRating, setActiveRating] = useState(null);
   const [showButton, setShowButton] = useState(false);
-  const user = JSON.parse(localStorage.getItem("user"));
+  const [user, setUser] = useState(null);
   const todayDate = new Date();
   const today = `${todayDate.getFullYear()}-${String(todayDate.getMonth() + 1).padStart(2, '0')}-${String(todayDate.getDate()).padStart(2, '0')}`;
 
@@ -19,6 +19,13 @@ function RatingGreeting() {
     setActiveRating(rating === activeRating ? null : rating);
     setShowButton(true);
   };
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if(storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
 
   const submitRating = async () => {
     // post request
